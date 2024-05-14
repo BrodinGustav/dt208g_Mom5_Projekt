@@ -4,5 +4,8 @@
     <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Search...">          <!--ngModel binder inputs-värde till searchTerm. filterCourses anropas vid input.-->
   </div>
   <div *ngFor="let course of filteredCourses">                                                              <!--ngFor itererar över värdena i filteredCourses-->
-    <p>{{ course.courseCode }} - {{ course.courseName }}</p>                                                <!--För varje kurs i filteredCourses skapas ett <p>-element-->
-  </div>
+    <p>
+      {{ course.courseCode }} - {{ course.courseName }}                                                <!--För varje kurs i filteredCourses skapas ett <p>-element-->
+      <button (click)="addToSchedule(course)">Lägg till ramschemat</button>                            <!--Läggger till knapp till varje kurs-->
+    </p>
+    </div>

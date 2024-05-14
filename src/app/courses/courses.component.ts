@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';                   //Används för *ngFor etc
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../services/courses.service';      //Importerar kurs-service
+import { ScheduleService } from '../services/framework.service';      //Importerar ramschema-service
 import { Courses } from '../../models/courses';                   //Importerar interface för kurser
+import { Framework } from '../../models/framework';                   //Importerar interface för ramschema
 import { FormsModule } from '@angular/forms';                     //För ngModule i formulär
 
 @Component({
@@ -16,7 +18,10 @@ export class CoursesComponent implements OnInit {
   filteredCourses: Courses[] = [];                                //Array för att lagra filtrerade kurser
   searchTerm: string = '';                                        //Sökterm för filtrering av kurser
 
-  constructor(private courseService: CourseService) { }           //Injicering av CourseService
+  constructor(
+    private courseService: CourseService,           //Injicering av CourseService
+    private ScheduleService: ScheduleService        //Deklarerar ScheduleService
+  ) { }
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => {        //Hämtar kurser från kurs-service 
@@ -31,6 +36,18 @@ export class CoursesComponent implements OnInit {
       course.courseCode.toLowerCase().includes(this.searchTerm.toLowerCase()) ||    //Filtrering efter kurskod
       course.courseName.toLowerCase().includes(this.searchTerm.toLowerCase())       //Filtrering efter kursnamn
     );
+  }
+
+  //Funktion för att lägga till kurs till ramschemat
+  addToSchedule(course: Courses): void {                                            
+    const scheduledCourse: Framework = {                                            //Skapa variabel av typen Framework
+      courseCode: course.courseCode,
+      courseName: course.courseName,
+      points: course.points,
+      subject: course.subject,
+      syllabus: course.syllabus
+    };
+    this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts
   }
 }
 
