@@ -2,7 +2,8 @@
 <h2>Ramschema</h2>
 <div>
     <p *ngFor="let course of schedule">
-      {{ course.courseCode }} - {{ course.courseName }} ({{ course.points }} poäng) 
+      {{ course.courseCode }} - {{ course.courseName }} ({{ course.points }} poäng) {{ course.subject }} {{ course.syllabus }} 
+      <a [href]="course.syllabus" target="_blank">Kursplan</a>                             <!--Binder URL:en för kursplan till länk som öppnas i ny flik-->
       <button (click)="removeFromSchedule(course.courseCode)">Ta bort</button>
     </p>
   </div>
