@@ -1,9 +1,13 @@
+import { CommonModule } from '@angular/common';   
 import { Component, OnInit } from '@angular/core';
 import { Framework } from '../../models/framework';
 import { ScheduleService } from '../services/framework.service';
+import { FormsModule } from '@angular/forms';       
 
 @Component({
   selector: 'app-framework',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './framework.component.html',
   styleUrls: ['./framework.component.css']
 })
