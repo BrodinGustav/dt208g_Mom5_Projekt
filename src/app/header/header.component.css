@@ -1,0 +1,21 @@
+header ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to right, rgb(188, 237, 252), rgb(0, 171, 201)); 
+    box-shadow: 2px 2px 10px black;
+    padding:10px;
+    font-weight: bold;
+}
+
+li{
+    list-style-type: none;
+ a {
+    text-decoration: none;
+ }
+}
+
+.current{
+    color: white;
+}

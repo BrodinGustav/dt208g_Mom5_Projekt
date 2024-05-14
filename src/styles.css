@@ -1,8 +1,10 @@
 body{
     max-width:968px;
+    margin:0 auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size:16px;
     line-height:1.2em;
     background-image: url("./assets/background.jpg");
     background-size: cover; 
 }
+
