@@ -11,7 +11,8 @@ export class CourseService {
 
   constructor(private http: HttpClient) { }         //HttpClient inkluderas
 
+  //Hämta poster från JSON-filen
   getCourses(): Observable<Courses[]> {
-    return this.http.get<Courses[]>(this.apiUrl);     
+    return this.http.get<Courses[]>(this.apiUrl);      //Anropa URL och hämta data enligt interface Courses
   }
 }
