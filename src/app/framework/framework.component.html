@@ -1,2 +1,9 @@
 <h1>Fjälluniversitetet</h1>
 <h2>Ramschema</h2>
+<div>
+    <p *ngFor="let course of schedule">
+      {{ course.courseCode }} - {{ course.courseName }} ({{ course.points }} poäng) 
+      <button (click)="removeFromSchedule(course.courseCode)">Ta bort</button>
+    </p>
+  </div>
+  <p>Totalt antal poäng: {{ totalPoints }}</p>
