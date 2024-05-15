@@ -4,6 +4,11 @@
     <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Sök...">          <!--ngModel binder inputs-värde till searchTerm. filterCourses anropas vid input.-->
   </div>
 
+  <div>
+    <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Välj ämne">
+    <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
+  </div>
+
   <table id="courseTable">
     <thead>
         <td class="headline"  (click)="sortTable('courseCode')">Kurskod</td>              

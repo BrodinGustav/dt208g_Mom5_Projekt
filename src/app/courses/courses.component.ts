@@ -17,30 +17,20 @@ export class CoursesComponent implements OnInit {
   courses: Courses[] = [];                                        //Array för att lagra alla kurser
   filteredCourses: Courses[] = [];                                //Array för att lagra filtrerade kurser
   searchTerm: string = '';                                        //Sökterm för filtrering av kurser
-  sortColumn: string = "";                //initierar egenskap för metod sortTable  
-  isAscending: boolean = true;            //initierar egenskap för metod sortTable
+  sortColumn: string = "";                                        //initierar egenskap för metod sortTable  
+  isAscending: boolean = true;                                    //initierar egenskap för metod sortTable
 
   constructor(
-    private courseService: CourseService,           //Injicering av CourseService
-    private ScheduleService: ScheduleService        //Deklarerar ScheduleService
+    private courseService: CourseService,                         //Injicering av CourseService
+    private ScheduleService: ScheduleService                      //Deklarerar ScheduleService
   ) { }
 
   ngOnInit(): void {
-    this.courseService.getCourses().subscribe(courses => {        //Hämtar kurser från kurs-service 
-      this.courses = courses;                                     //Tilldelar hämtade kurser till courses-array
-      this.filteredCourses = courses.map (course => ({           //Tilldelar egenskaper för sortering av array
-      courseCode: course.courseCode,
-      subjectCode: course.subjectCode,
-      level: course.level,
-      progression: course.progression,
-      courseName: course.courseName,
-      points: course.points,
-      institutionCode: course.institutionCode,
-      subject: course.subject,
-      syllabus: course.syllabus
-    }));
-  });
-}
+    this.courseService.getCourses().subscribe(courses => {                  //Anropar getCourses() från courseService. Data från api hämtas som courses
+      this.courses = courses;                                               // Tilldelar hämtade kurser till courses-array
+      this.filteredCourses = [...courses];                                  //Kopia av hämtade kurser skapas och tilldelas this.filteredCourses. Kopia görs för att ha 2 separat arrayer, en för sortering och en för filtrering.
+    });
+  }
 
   //Funktion för att filtrera kurser baserat på sökterm
   filterCourses(): void {
@@ -94,5 +84,9 @@ export class CoursesComponent implements OnInit {
     });
   }
 
+ // Funktion för att räkna antalet kurser i den aktuella filtreringen
+ getTotalCourses(): number {
+  return this.filteredCourses.length;
+}
 
 }
