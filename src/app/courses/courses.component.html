@@ -3,29 +3,33 @@
 <div>
     <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Sök...">          <!--ngModel binder inputs-värde till searchTerm. filterCourses anropas vid input.-->
   </div>
-  <div *ngFor="let course of filteredCourses">                                                              <!--ngFor itererar över värdena i filteredCourses-->
-    <p>                                                                                                   <!--För varje kurs i filteredCourses skapas ett <p>-element-->
-      <strong>Kurskod:</strong> {{ course.courseCode }}<br>
-      </p>
-      <p>                                                
-      <strong>Kursnamn:</strong> {{ course.courseName }}<br> 
-      </p>
-      <p>
-      <strong>Nivå:</strong> {{ course.level }}<br>
-    </p>
-    <p>
-      <strong>Progression:</strong> {{ course.progression }}<br>
-    </p>
-      <p>
-      <strong>Poäng:</strong> {{ course.points }}<br>
-    </p>
-    <p>
-      <strong>Ämne:</strong> {{ course.subject }}<br>
-    </p>
-    <p>
-      <strong>Syllabus:</strong> <a [href]="course.syllabus" target="_blank">Kursplan</a><br>
-      <button (click)="addToSchedule(course)">Lägg till ramschemat</button>                                 <!--Läggger till knapp till varje kurs-->
-    </p>
-    </div>
+
+  <table id="courseTable">
+    <thead>
+        <td class="headline"  (click)="sortTable('code')">Kurskod</td>              
+        <td class="headline"  (click)="sortTable('coursename')">Kursnamn</td>
+        <td class="headline"  (click)="sortTable('level')">Nivå</td>
+        <td class="headline"  (click)="sortTable('progression')">Progression</td>
+        <td class="headline"  (click)="sortTable('points')">Poäng</td>
+        <td class="headline"  (click)="sortTable('subject')">Ämne</td>
+        <td class="headline"  (click)="sortTable('syllabus')">Kursplan</td>
+
+
+        <tr *ngFor="let course of filteredCourses">   <!--loopar igenom variabeln filteredCourses för filtrering av sökning-->
+          <td> {{ course.courseCode }}</td>
+          <td> {{ course.courseName }}</td>            
+          <td> {{ course.level }}</td>            
+          <td>{{ course.progression }}</td>
+          <td>{{ course.points }}</td>
+          <td>{{ course.subject }}</td>
+          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>         
+          <button (click)="addToSchedule(course)">Lägg till ramschemat</button>                                 <!--Läggger till knapp till varje kurs-->
+        </tr>
+      </thead>
+</table>
+
 
    
+
+  
+  

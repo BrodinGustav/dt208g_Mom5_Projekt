@@ -17,6 +17,8 @@ export class CoursesComponent implements OnInit {
   courses: Courses[] = [];                                        //Array för att lagra alla kurser
   filteredCourses: Courses[] = [];                                //Array för att lagra filtrerade kurser
   searchTerm: string = '';                                        //Sökterm för filtrering av kurser
+  sortColumn: string = "";                //initierar egenskap för metod sortTable  
+  isAscending: boolean = true;            //initierar egenskap för metod sortTable
 
   constructor(
     private courseService: CourseService,           //Injicering av CourseService
@@ -49,5 +51,23 @@ export class CoursesComponent implements OnInit {
     };
     this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts
   }
+
+  // Metod för att sortera tabellen
+  sortTable(column: string): void {
+    if (this.sortColumn === column) {         //Kontroll för att se om sortColumn är samma som användaren klickade på
+      this.isAscending = !this.isAscending;   //Om samma kolumn byts riktning på sortering
+    } else {
+      this.sortColumn = column;               
+      this.isAscending = true;
+    }
+
+    Array.prototype.sort((a, b) => {            //a, b representerar 2 element som jämförs för att bestämma stigande/fallande ordning
+      const valueA = a[column].toLowerCase();         //Hämtar värde för kolumen "a" och konverterar till små bokstäver 
+      const valueB = b[column].toLowerCase();
+      return this.isAscending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);  //Jämför värde A och B för att se om ordningen ska sorteras stigande eller fallande.
+    });
+  }
+
+
 }
 
