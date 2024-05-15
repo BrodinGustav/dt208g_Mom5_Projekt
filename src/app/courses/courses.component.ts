@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';                     //För ngModul
 export class CoursesComponent implements OnInit {
   courses: Courses[] = [];                                        //Array för att lagra alla kurser
   filteredCourses: Courses[] = [];                                //Array för att lagra filtrerade kurser
+  uniqueSubjects: string[] = [];                                  //Array för att lagra unika ämnen som ska användas till sortering vid sökning
   searchTerm: string = '';                                        //Sökterm för filtrering av kurser
   sortColumn: string = "";                                        //initierar egenskap för metod sortTable  
   isAscending: boolean = true;                                    //initierar egenskap för metod sortTable
@@ -30,6 +31,7 @@ export class CoursesComponent implements OnInit {
     this.courseService.getCourses().subscribe(courses => {                  //Anropar getCourses() från courseService. Data från api hämtas som courses
       this.courses = courses;                                               // Tilldelar hämtade kurser till courses-array
       this.filteredCourses = [...courses];                                  //Kopia av hämtade kurser skapas och tilldelas this.filteredCourses. Kopia görs för att ha 2 separat arrayer, en för sortering och en för filtrering.
+      this.extractUniqueSubjects();                                         //Tildelar unika ämnen som lagras i uniqueSubjects-array
     });
   }
 
@@ -94,6 +96,15 @@ export class CoursesComponent implements OnInit {
  // Funktion för att räkna antalet kurser i den aktuella filtreringen
  getTotalCourses(): number {
   return this.filteredCourses.length;
+}
+
+//Funktion som loopar igenom kurser, tar ut unika ämnen och lagrar de i uniqueSubjects
+extractUniqueSubjects(): void {
+  const subjectsSet = new Set<string>();
+  this.courses.forEach(course => {
+    subjectsSet.add(course.subject);
+  });
+  this.uniqueSubjects = Array.from(subjectsSet);
 }
 
 }

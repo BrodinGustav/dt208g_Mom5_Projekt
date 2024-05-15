@@ -5,8 +5,11 @@
   </div>
 
   <div>
-    <input type="text" [(ngModel)]="subjectSearchTerm" (input)="filterCoursesBySubject()" placeholder="Välj ämne">
+    <select [(ngModel)]="subjectSearchTerm" (change)="filterCoursesBySubject()" placeholder="Välj ämne">
+      <option value="">Väljs ämne</option>
+      <option *ngFor="let subject of uniqueSubjects" [value]="subject">{{ subject }}</option>
     <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
+    </select>
   </div>
 
   <table id="courseTable">
@@ -28,7 +31,7 @@
           <td>{{ course.points }}</td>
           <td>{{ course.subject }}</td>
           <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>         
-          <button (click)="addToSchedule(course)">Lägg till ramschemat</button>                                 <!--Läggger till knapp till varje kurs-->
+          <button (click)="addToSchedule(course)">Lägg till</button>                                 <!--Läggger till knapp till varje kurs-->
         </tr>
       </thead>
 </table>
