@@ -7,9 +7,9 @@
   <div>
     <select [(ngModel)]="subjectSearchTerm" (change)="filterCoursesBySubject()" placeholder="Välj ämne">
       <option value="">Väljs ämne</option>
-      <option *ngFor="let subject of uniqueSubjects" [value]="subject">{{ subject }}</option>
-    <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
+      <option *ngFor="let subject of uniqueSubjects" [value]="subject">{{ subject }}</option>           <!--Fyller select-boxen med ämnen från uniqueSubjects-arrayen-->
     </select>
+    <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
   </div>
 
   <table id="courseTable">
@@ -31,8 +31,8 @@
           <td>{{ course.points }}</td>
           <td>{{ course.subject }}</td>
           <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>         
-          <button (click)="addToSchedule(course)">Lägg till</button>                                 <!--Läggger till knapp till varje kurs-->
-        </tr>
+          <button (click)="addToSchedule(course)" [ngStyle]="{'background-color': buttonClicked ? '#30a4c5' : '#3ed5ff'}">Lägg till</button>    <!--Läggger till knapp till varje kurs-->
+        </tr>                                                                                                                                <!--Stilbindnig används för att ändra kulör på knapp vid klick-->
       </thead>
 </table>
 

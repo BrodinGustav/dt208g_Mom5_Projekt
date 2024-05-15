@@ -6,7 +6,7 @@ import { CoursesComponent } from './courses/courses.component';
 export const routes: Routes = [
     {path: 'courses', component: CoursesComponent},  
     {path: 'framework', component: FrameworkComponent},  
-    {path: '', redirectTo: '/home', pathMatch: 'full'},              //Dirigerar tillbaka till startsidan
+    {path: '', redirectTo: '/courses', pathMatch: 'full'},              //Dirigerar tillbaka till startsidan
     {path: '404', component: NotFoundComponent},
     {path: '**', component: NotFoundComponent}
 ];

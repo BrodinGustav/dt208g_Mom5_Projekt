@@ -21,6 +21,7 @@ export class CoursesComponent implements OnInit {
   sortColumn: string = "";                                        //initierar egenskap för metod sortTable  
   isAscending: boolean = true;                                    //initierar egenskap för metod sortTable
   subjectSearchTerm: string = '';                                 //initierar egenskap för metod filterCoursesBySubject
+  buttonClicked: boolean = false;                                 //Boolean för möjlighet till färgändring av klickad knapp
 
   constructor(
     private courseService: CourseService,                         //Injicering av CourseService
@@ -59,6 +60,7 @@ export class CoursesComponent implements OnInit {
       syllabus: course.syllabus
     };
     this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts
+    this.buttonClicked = true;                                                      //Markerar att "lägga-till"-knappen har klickats
   }
 
   // Metod för att sortera tabellen

@@ -15,7 +15,7 @@ div{
 
 button{
     border-radius:10px;
-    background-color: rgb(62, 213, 255);
+    background-color: #3ed5ff;
     box-shadow:2px 2px 5px black;
     cursor: pointer;
     padding: 15px;
@@ -31,7 +31,7 @@ input[type="text" i]{
 }
 
 select{
-  width:8em;
+  width:13em;
 }
 
 table {
