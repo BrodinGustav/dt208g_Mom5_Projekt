@@ -5,7 +5,7 @@
   </div>
 
   <div>
-    <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Välj ämne">
+    <input type="text" [(ngModel)]="subjectSearchTerm" (input)="filterCoursesBySubject()" placeholder="Välj ämne">
     <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
   </div>
 

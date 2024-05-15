@@ -19,6 +19,7 @@ export class CoursesComponent implements OnInit {
   searchTerm: string = '';                                        //Sökterm för filtrering av kurser
   sortColumn: string = "";                                        //initierar egenskap för metod sortTable  
   isAscending: boolean = true;                                    //initierar egenskap för metod sortTable
+  subjectSearchTerm: string = '';                                 //initierar egenskap för metod filterCoursesBySubject
 
   constructor(
     private courseService: CourseService,                         //Injicering av CourseService
@@ -37,6 +38,12 @@ export class CoursesComponent implements OnInit {
     this.filteredCourses = this.courses.filter(course =>
       course.courseCode.toLowerCase().includes(this.searchTerm.toLowerCase()) ||    //Filtrering efter kurskod
       course.courseName.toLowerCase().includes(this.searchTerm.toLowerCase())       //Filtrering efter kursnamn
+    );
+  }
+
+  filterCoursesBySubject(): void {
+    this.filteredCourses = this.courses.filter(course =>                            //Tilldelar ny array till filteredCourses efter att filtrerat this.courses-array  
+      course.subject.toLowerCase().includes(this.subjectSearchTerm.toLowerCase())   //Filtrering efter ämne
     );
   }
 
