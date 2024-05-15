@@ -30,8 +30,9 @@
           <td>{{ course.progression }}</td>
           <td>{{ course.points }}</td>
           <td>{{ course.subject }}</td>
-          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>         
-          <button (click)="addToSchedule(course)" [ngStyle]="{'background-color': buttonClicked ? '#30a4c5' : '#3ed5ff'}">Lägg till</button>    <!--Läggger till knapp till varje kurs-->
+          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>        
+          <!--Läggger till knapp till varje kurs--> 
+          <button (click)="addToSchedule(course, i)" [ngStyle]="{'background-color': buttonClicked[i] ? '#30a4c5' : '#3ed5ff'}" *ngFor="let course of filteredCourses; let i = index">Lägg till</button>   
         </tr>                                                                                                                                <!--Stilbindnig används för att ändra kulör på knapp vid klick-->
       </thead>
 </table>

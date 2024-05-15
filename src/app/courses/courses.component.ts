@@ -21,7 +21,7 @@ export class CoursesComponent implements OnInit {
   sortColumn: string = "";                                        //initierar egenskap för metod sortTable  
   isAscending: boolean = true;                                    //initierar egenskap för metod sortTable
   subjectSearchTerm: string = '';                                 //initierar egenskap för metod filterCoursesBySubject
-  buttonClicked: boolean = false;                                 //Boolean för möjlighet till färgändring av klickad knapp
+  buttonClicked: boolean[] = [];                                 //Array med Booleanska värden för att spåra status för varje knapp
 
   constructor(
     private courseService: CourseService,                         //Injicering av CourseService
@@ -33,6 +33,7 @@ export class CoursesComponent implements OnInit {
       this.courses = courses;                                               // Tilldelar hämtade kurser till courses-array
       this.filteredCourses = [...courses];                                  //Kopia av hämtade kurser skapas och tilldelas this.filteredCourses. Kopia görs för att ha 2 separat arrayer, en för sortering och en för filtrering.
       this.extractUniqueSubjects();                                         //Tildelar unika ämnen som lagras i uniqueSubjects-array
+      this.buttonClicked = new Array(courses.length).fill(false);           //Initierar arrayen med false för varje kurs (ingen är klickad på)
     });
   }
 
@@ -51,7 +52,7 @@ export class CoursesComponent implements OnInit {
   }
 
   //Funktion för att lägga till kurs till ramschemat
-  addToSchedule(course: Courses): void {                                            
+  addToSchedule(course: Courses, index: number): void {                                            
     const scheduledCourse: Framework = {                                            //Skapa variabel av typen Framework
       courseCode: course.courseCode,
       courseName: course.courseName,
@@ -60,7 +61,7 @@ export class CoursesComponent implements OnInit {
       syllabus: course.syllabus
     };
     this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts
-    this.buttonClicked = true;                                                      //Markerar att "lägga-till"-knappen har klickats
+    this.buttonClicked[index] = true;                                               //Markerar att "lägga-till"-knappen har klickats för aktuell kurs
   }
 
   // Metod för att sortera tabellen
