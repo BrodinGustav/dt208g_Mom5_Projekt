@@ -10,4 +10,3 @@ export interface Courses{
     syllabus: string;
 }
 
-//Interface som struktur för array av JSON-fil. Ska importeras i courses.component.ts?

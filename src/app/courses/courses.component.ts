@@ -28,7 +28,12 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => {        //Hämtar kurser från kurs-service 
       this.courses = courses;                                     //Tilldelar hämtade kurser till courses-array
-      this.filteredCourses = courses;                             //Tilldelar samma kurser till filteredCourses-array
+      this.filteredCourses = courses.map (course => ({
+        courseCode: course.courseCode,
+        courseName: course.courseName,
+        coursePoints: course.points,
+        courseSubject: course.subject
+      }));                             //Tilldelar samma kurser till filteredCourses-array
     });
   }
 
@@ -61,7 +66,7 @@ export class CoursesComponent implements OnInit {
       this.isAscending = true;
     }
 
-    Array.prototype.sort((a, b) => {            //a, b representerar 2 element som jämförs för att bestämma stigande/fallande ordning
+    this.filterCourses.sort((a, b) => {            //a, b representerar 2 element som jämförs för att bestämma stigande/fallande ordning
       const valueA = a[column].toLowerCase();         //Hämtar värde för kolumen "a" och konverterar till små bokstäver 
       const valueB = b[column].toLowerCase();
       return this.isAscending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);  //Jämför värde A och B för att se om ordningen ska sorteras stigande eller fallande.
