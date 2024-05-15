@@ -10,6 +10,7 @@ p{
 div{
     margin-bottom:2em;
     border-bottom:1px solid black;
+    max-width:100%;
 }
 
 button{
