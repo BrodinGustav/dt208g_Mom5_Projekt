@@ -1,10 +1,25 @@
-<h1>Fjälluniversitetet</h1>
-<h2>Ramschema</h2>
+<h1>Ramschema</h1>
 <div>
-    <p *ngFor="let course of schedule">
-      {{ course.courseCode }} - {{ course.courseName }} ({{ course.points }} poäng) {{ course.subject }} {{ course.syllabus }} 
-      <a [href]="course.syllabus" target="_blank">Kursplan</a>                             <!--Binder URL:en för kursplan till länk som öppnas i ny flik-->
-      <button (click)="removeFromSchedule(course.courseCode)">Ta bort</button>
+  <h2>Kurslista</h2>
+  <hr>
+    <div *ngFor="let course of schedule">
+      <p>
+      <strong>Kod:</strong> {{ course.courseCode }}  <br>
     </p>
+    <p>
+      <strong>Kursnamn:</strong> {{ course.courseName }} <br>
+    </p>
+    <p>
+      <strong>Poäng</strong> {{ course.points }} poäng <br>
+    </p>
+    <p> 
+      <strong>Ämne</strong> {{ course.subject }} <br>
+    </p>
+    <p>  
+      <strong>Kursplan:</strong> <a [href]="course.syllabus" target="_blank">Kursplan</a> <br> <!--Binder URL:en för kursplan till länk som öppnas i ny flik-->
+    </p>  
+      <button (click)="removeFromSchedule(course.courseCode)">Radera</button>
+    </div>
+    <hr>
   </div>
-  <p>Totalt antal poäng: {{ totalPoints }}</p>
+  <p class="hp"><strong>Totalt antal poäng:</strong> {{ totalPoints }} hp</p>

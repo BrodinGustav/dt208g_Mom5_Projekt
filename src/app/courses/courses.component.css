@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+    margin-top:2em;
+}
+
+p{
+    margin-bottom:0.5em;
+}
+
+div{
+    margin-bottom:2em;
+    border-bottom:1px solid black;
+}
+
+button{
+    border-radius:10px;
+    background-color: rgb(62, 213, 255);
+    box-shadow:2px 2px 5px black;
+    cursor: pointer;
+    padding:5px;
+    font-weight:bold;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+input[type="text" i]{
+    margin-bottom:1em;
+}

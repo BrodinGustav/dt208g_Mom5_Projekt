@@ -1,11 +1,31 @@
 <h1>Fjälluniversitetet</h1>
 <h2>Kurser</h2>
 <div>
-    <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Search...">          <!--ngModel binder inputs-värde till searchTerm. filterCourses anropas vid input.-->
+    <input type="text" [(ngModel)]="searchTerm" (input)="filterCourses()" placeholder="Sök...">          <!--ngModel binder inputs-värde till searchTerm. filterCourses anropas vid input.-->
   </div>
   <div *ngFor="let course of filteredCourses">                                                              <!--ngFor itererar över värdena i filteredCourses-->
+    <p>                                                                                                   <!--För varje kurs i filteredCourses skapas ett <p>-element-->
+      <strong>Kurskod:</strong> {{ course.courseCode }}<br>
+      </p>
+      <p>                                                
+      <strong>Kursnamn:</strong> {{ course.courseName }}<br> 
+      </p>
+      <p>
+      <strong>Nivå:</strong> {{ course.level }}<br>
+    </p>
     <p>
-      {{ course.courseCode }} - {{ course.courseName }}                                                <!--För varje kurs i filteredCourses skapas ett <p>-element-->
-      <button (click)="addToSchedule(course)">Lägg till ramschemat</button>                            <!--Läggger till knapp till varje kurs-->
+      <strong>Progression:</strong> {{ course.progression }}<br>
+    </p>
+      <p>
+      <strong>Poäng:</strong> {{ course.points }}<br>
+    </p>
+    <p>
+      <strong>Ämne:</strong> {{ course.subject }}<br>
+    </p>
+    <p>
+      <strong>Syllabus:</strong> <a [href]="course.syllabus" target="_blank">Kursplan</a><br>
+      <button (click)="addToSchedule(course)">Lägg till ramschemat</button>                                 <!--Läggger till knapp till varje kurs-->
     </p>
     </div>
+
+   
