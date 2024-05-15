@@ -72,9 +72,18 @@ export class CoursesComponent implements OnInit {
     }
 
     this.filteredCourses.sort((a, b) => {            //a, b representerar 2 element som jämförs för att bestämma stigande/fallande ordning
+      //Kontroll om column finns i a och b 
+      if(a[column] && b[column]){
+         // Kontroll om a[column] och b[column] är strängar innan toLowerCase() används
+      if (typeof a[column] === 'string' && typeof b[column] === 'string') {
       const valueA = a[column].toLowerCase();         //Hämtar värde för kolumen "a" och konverterar till små bokstäver 
       const valueB = b[column].toLowerCase();
       return this.isAscending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);  //Jämför värde A och B för att se om ordningen ska sorteras stigande eller fallande.
+      }
+    }else{
+      //returnera 0 ifall column ej finns för att inte ändra ordningen
+      return 0;
+    }
     });
   }
 
