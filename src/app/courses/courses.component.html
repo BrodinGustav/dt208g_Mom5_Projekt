@@ -6,7 +6,7 @@
 
   <div>
     <select [(ngModel)]="subjectSearchTerm" (change)="filterCoursesBySubject()" placeholder="Välj ämne">
-      <option value="">Väljs ämne</option>
+      <option value="">Välj ämne</option>
       <option *ngFor="let subject of uniqueSubjects" [value]="subject">{{ subject }}</option>           <!--Fyller select-boxen med ämnen från uniqueSubjects-arrayen-->
     </select>
     <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
@@ -14,6 +14,7 @@
 
   <table id="courseTable">
     <thead>
+      <tr>
         <td class="headline"  (click)="sortTable('courseCode')">Kurskod</td>              
         <td class="headline"  (click)="sortTable('courseName')">Kursnamn</td>
         <td class="headline"  (click)="sortTable('level')">Nivå</td>
@@ -21,8 +22,9 @@
         <td class="headline"  (click)="sortTable('points')">Poäng</td>
         <td class="headline"  (click)="sortTable('subject')">Ämne</td>
         <td class="headline"  (click)="sortTable('syllabus')">Kursplan</td>
-
-
+      </tr>
+      </thead>
+<tbody>
         <tr *ngFor="let course of filteredCourses">   <!--loopar igenom variabeln filteredCourses för filtrering av sökning-->
           <td> {{ course.courseCode }}</td>
           <td> {{ course.courseName }}</td>            
@@ -30,11 +32,14 @@
           <td>{{ course.progression }}</td>
           <td>{{ course.points }}</td>
           <td>{{ course.subject }}</td>
-          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>        
+          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>     
+          <td>   
           <!--Läggger till knapp till varje kurs--> 
-          <button (click)="addToSchedule(course, i)" [ngStyle]="{'background-color': buttonClicked[i] ? '#30a4c5' : '#3ed5ff'}" *ngFor="let course of filteredCourses; let i = index">Lägg till</button>   
-        </tr>                                                                                                                                <!--Stilbindnig används för att ändra kulör på knapp vid klick-->
-      </thead>
+          <button (click)="addToSchedule(course)">Lägg till</button>     <!--Stilbindnig används för att ändra kulör på knapp vid klick-->  
+        
+        </td>
+        </tr>                                                                                                                            
+      </tbody>
 </table>
 
 

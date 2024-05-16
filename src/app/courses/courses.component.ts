@@ -52,7 +52,7 @@ export class CoursesComponent implements OnInit {
   }
 
   //Funktion för att lägga till kurs till ramschemat
-  addToSchedule(course: Courses, index: number): void {                                            
+  addToSchedule(course: Courses): void {                                            
     const scheduledCourse: Framework = {                                            //Skapa variabel av typen Framework
       courseCode: course.courseCode,
       courseName: course.courseName,
@@ -61,7 +61,7 @@ export class CoursesComponent implements OnInit {
       syllabus: course.syllabus
     };
     this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts
-    this.buttonClicked[index] = true;                                               //Markerar att "lägga-till"-knappen har klickats för aktuell kurs
+                                     
   }
 
   // Metod för att sortera tabellen

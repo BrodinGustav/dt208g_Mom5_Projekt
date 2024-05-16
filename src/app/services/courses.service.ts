@@ -7,8 +7,8 @@ import { Courses } from '../../models/courses';   //Importerar interface för co
   providedIn: 'root'
 })
 export class CourseService {
-  private apiUrl = 'https://matdah.github.io/DT208G---Programmering-i-TypeScript/Moment%205%20-%20Projekt/miun_courses.json'; //URL:en till JSON-fil
-
+  private apiUrl = "./assets/miun_courses.json"; //Hämtar JSON-filen lokalt från assets-mappen
+  
   constructor(private http: HttpClient) { }         //HttpClient inkluderas
 
   //Hämta poster från JSON-filen

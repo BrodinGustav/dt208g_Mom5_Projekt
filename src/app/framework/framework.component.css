@@ -25,7 +25,15 @@ button{
     margin-bottom:1em;
 }
 
-.hp{
-    color:white;
-}
+@media only screen and (max-width: 600px) {
+    div {
+        max-width:100%;
+        display:flex;
+        flex-direction: column;
+        margin-left:0.5em;
+    }
 
+    button{
+       width:50%;
+    }
+}

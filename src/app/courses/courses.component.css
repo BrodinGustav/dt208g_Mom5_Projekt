@@ -3,10 +3,6 @@ h1{
     margin-top:2em;
 }
 
-p{
-    margin-bottom:0.5em;
-}
-
 div{
     margin-bottom:2em;
     border-bottom:1px solid black;
@@ -24,6 +20,10 @@ button{
     margin-bottom:1em;
     max-width:100%;
     width:8em;
+}
+
+button:active{
+background-color: #2486a1;
 }
 
 input[type="text" i]{
@@ -54,4 +54,14 @@ table {
 border:none;
 text-decoration: underline;
 cursor:pointer;
+}
+
+@media only screen and (max-width: 600px) {
+ #courseTable thead{
+  display: none;
+ }
+ #courseTable tbody, #courseTable tr, #courseTable td{
+  display: block;
+  width: 100%;
+ }
 }
