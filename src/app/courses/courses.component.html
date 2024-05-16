@@ -12,32 +12,37 @@
     <p>Totalt antal kurser: {{ getTotalCourses() }}</p>
   </div>
 
+  <div class="sort-buttons">
+    <button (click)="sortTable('courseCode')">Kurskod</button>
+    <button (click)="sortTable('courseName')">Kursnamn</button>
+    <button (click)="sortTable('points')">Poäng</button>
+    <button (click)="sortTable('subject')">Ämne</button>
+  </div>
+
   <table id="courseTable">
     <thead>
       <tr>
-        <td class="headline"  (click)="sortTable('courseCode')">Kurskod</td>              
-        <td class="headline"  (click)="sortTable('courseName')">Kursnamn</td>
-        <td class="headline"  (click)="sortTable('level')">Nivå</td>
-        <td class="headline"  (click)="sortTable('progression')">Progression</td>
-        <td class="headline"  (click)="sortTable('points')">Poäng</td>
-        <td class="headline"  (click)="sortTable('subject')">Ämne</td>
-        <td class="headline"  (click)="sortTable('syllabus')">Kursplan</td>
+        <td class="headlineClick"  (click)="sortTable('courseCode')">Kurskod</td>              
+        <td class="headlineClick"  (click)="sortTable('courseName')">Kursnamn</td>
+        <td class="headline"  >Nivå</td>
+        <td class="headline"  >Progression</td>
+        <td class="headlineClick"  (click)="sortTable('points')">Poäng</td>
+        <td class="headlineClick"  (click)="sortTable('subject')">Ämne</td>
+        <td class="headline"  >Kursplan</td>
       </tr>
       </thead>
 <tbody>
         <tr *ngFor="let course of filteredCourses">   <!--loopar igenom variabeln filteredCourses för filtrering av sökning-->
-          <td> {{ course.courseCode }}</td>
-          <td> {{ course.courseName }}</td>            
-          <td> {{ course.level }}</td>            
-          <td>{{ course.progression }}</td>
-          <td>{{ course.points }}</td>
-          <td>{{ course.subject }}</td>
-          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td>     
-          <td>   
+        <td data-label="Kurskod">{{ course.courseCode }}</td>
+        <td data-label="Kursnamn">{{ course.courseName }}</td>
+        <td data-label="Nivå">{{ course.level }}</td>
+        <td data-label="Progression">{{ course.progression }}</td>
+        <td data-label="Poäng">{{ course.points }}</td>
+        <td data-label="Ämne">{{ course.subject }}</td>
+        <td data-label="Kursplan"><a [href]="course.syllabus" target="_blank">Kursplan</a></td>
           <!--Läggger till knapp till varje kurs--> 
-          <button (click)="addToSchedule(course)">Lägg till</button>     <!--Stilbindnig används för att ändra kulör på knapp vid klick-->  
-        
-        </td>
+          <button (click)="addToSchedule(course)">Lägg till</button>      
+
         </tr>                                                                                                                            
       </tbody>
 </table>

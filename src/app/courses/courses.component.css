@@ -26,6 +26,7 @@ button:active{
 background-color: #2486a1;
 }
 
+
 input[type="text" i]{
     margin-bottom:1em;
 }
@@ -34,34 +35,104 @@ select{
   width:13em;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-  }
+.headline{
+  font-weight: bold;
+}
 
-  th, td {
-    border-top: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
+.headlineClick{
+  font-weight:bold;
+  cursor:pointer
+}
+#courseTable {
+  width: 100%;
+  max-width:100%;
+  border-collapse: collapse;
+}
 
-  th {
-    cursor: pointer;
-  }
+#courseTable th, #courseTable td {
+  border-bottom: 1px solid #ddd;
+  padding: 3px;
+  text-align: left;
+}
 
-.headline {font-weight: bold;
-border:none;
-text-decoration: underline;
-cursor:pointer;
+#courseTable th {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+.sort-buttons {
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
- #courseTable thead{
-  display: none;
- }
- #courseTable tbody, #courseTable tr, #courseTable td{
-  display: block;
-  width: 100%;
- }
+  .sort-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    max-width:100%;
+  }
+  #courseTable thead {
+    display: none;
+  }
+  #courseTable tbody, #courseTable tr, #courseTable td {
+    display: block;
+    width: 85%;
+    max-width:100%
+  }
+  #courseTable tr {
+    margin-bottom: 10px;
+
+  }
+  #courseTable td {
+    text-align: right;
+    padding-left: 25%;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+  }
+  #courseTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+  .sort-buttons {
+    display: flex;
+    gap:1em;
+    margin-bottom: 10px;
+    max-width:100%;
+  }
+  #courseTable thead {
+    display: none;
+  }
+  #courseTable tbody, #courseTable tr, #courseTable td {
+    display: block;
+    width: 85%;
+    max-width:100%
+  }
+  #courseTable tr {
+    margin-bottom: 10px;
+
+  }
+  #courseTable td {
+    text-align: right;
+    padding-left: 25%;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+  }
+  #courseTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
 }
