@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';    //Importerar HttpClient
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs';                    //Hanterar asynkrona dataströmmar i HTTP-anrop
 import { Courses } from '../../models/courses';   //Importerar interface för courses
 
 @Injectable({

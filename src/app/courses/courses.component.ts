@@ -60,8 +60,7 @@ export class CoursesComponent implements OnInit {
       subject: course.subject,
       syllabus: course.syllabus
     };
-    this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts
-                                     
+    this.ScheduleService.addToSchedule(scheduledCourse);                            //ScheduleService används för att lägga till den nya kursen i ramschemat. addToSchedule-metod återfinns i framework.service.ts                 
   }
 
   // Metod för att sortera tabellen
