@@ -1,27 +1,73 @@
-# Mom5Projekt
+### Angular Frontend Project README
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+### Om projektet
+Detta projekt är en Angular-baserad frontendapplikation för hantering av kurser och ramschema.
 
-## Development server
+### Installation
+Klona detta repository till din lokala maskin.
+Öppna en terminal och navigera till projektmappen.
+Kör kommandot npm install för att installera alla projektets beroenden.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Användning
+Starta applikationen genom att köra kommandot ng serve.
+Öppna din webbläsare och navigera till http://localhost:4200/.
 
-## Code scaffolding
+### Projektstruktur
+index.html
+Huvud-HTML-filen som definierar grunderna för applikationens struktur.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### models/
+course.ts: Ett interface som definierar strukturen för kurser.
+framework.ts: Ett interface som definierar strukturen för ramschema.
 
-## Build
+### Assets/
+miun_courses.json: En JSON-fil som innehåller kursdata.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Components/
+app-header/: En komponent som representerar applikationens header.
+app-footer/: En komponent som representerar applikationens footer.
 
-## Running unit tests
+### courses/: En komponent för att visa och hantera kurser.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### framework/: En komponent för att visa och hantera ramschema.
 
-## Running end-to-end tests
+### not-found/: En komponent för att visa en 404-sida.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Services/
 
-## Further help
+### courses.service.ts: En service för att hantera kursdata.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### framework.service.ts: En service för att hantera ramscheman.
+
+### Komponenter
+app.component
+Huvudkomponenten som innehåller grundläggande layout för hela applikationen.
+
+header.component
+En komponent som visar navigeringsmenyn för att välja mellan kurser och ramschema.
+
+footer.component
+En komponent som visar footer-information för applikationen.
+
+courses.component
+En komponent som hanterar visning och filtrering av kurser.
+
+framework.component
+En komponent som hanterar visning och hantering av ramschema.
+
+### Routes
+/courses: Visar kurser.
+/framework: Visar ramschema.
+/404: Visas vid felaktig sökväg.
+/: Omdirigerar till kurssidan som standard.
+
+### Förberedelser
+Se till att ha Node.js och Angular CLI installerade på din maskin.
+
+### Teknologier
+Angular
+TypeScript
+HTML
+CSS
+
+###Skapad av Gustav Brodin - DT208G - Mom 5 - VT 2024
