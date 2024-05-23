@@ -8,6 +8,7 @@ body{
     background-image: url("./assets/background.jpg");
     background-size: cover; 
     background-repeat:no-repeat;
+    padding:20px;
 }
 
 h2 {
@@ -16,6 +17,7 @@ h2 {
 
 
 @media only screen and (max-width: 600px) {
+   
     h1{
         font-size:1.5em;
     }
